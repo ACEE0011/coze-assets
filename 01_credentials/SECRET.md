@@ -180,6 +180,20 @@
 - **Free计划**: 250次搜索/月, 50次/小时吞吐量
 - **定位**: Google搜索API备选，需要真实Google搜索结果时使用
 - **来源**: 老板给的免费Key
+
+## 神稳AI (SWA) — 2026-07-16 老板提供
+- **Key #1**: sk-or-v1-sUwZwRuo0c6-5FSz_mIjWWcbiMuB4Qa7z2bZaTJF9Hs
+- **Key #2**: (留空，备用)
+- **Base URL**: https://api.shenwenai.com/v1/chat/completions
+- **模型**: gpt-5.4-mini
+- **定位**: 新增矿工，补充国内AI渠道
+
+## Perplexity API — 2026-07-16 老板提供
+- **Key #1**: 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
+- **Key #2**: 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
+- **Base URL**: https://api.perplexity.ai/chat/completions
+- **模型**: sonar
+- **定位**: 海外AI渠道，补充知识库能力
 ## Kimi (Moonshot AI) API — 2026-07-02
 
 ### 海外账号（platform.kimi.ai）
