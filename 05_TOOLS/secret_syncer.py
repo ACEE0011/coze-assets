@@ -17,6 +17,7 @@ KNOWN_KEY_GROUPS = {
     "TG": ["TG_API_ID", "TG_API_HASH", "TG_PHONE", "TG_BOT_TOKEN_1", "TG_BOT_TOKEN_2", "TG_CHAT_ID"],
     "ONEAPI": ["ONEAPI_ADMIN_TOKEN", "MINER_API_KEY", "MINER_API_BASE"],
     "OTHER": ["APIYI_KEY", "SIXFINGER_KEY", "SERPAPI_KEY"],
+    "FELO": ["FELO_API_KEY", "FELO_BASE_URL"],
     "ALIASES": ["ZHIPU_KEY", "ZHIPU_BASE", "GITHUB_PAT", "GITHUB_BASE", "GH_PAT", "GITHUB_TOKEN"],
 }
 
@@ -32,6 +33,7 @@ GROUP_LABELS = {
     "TG": "Telegram",
     "ONEAPI": "One API",
     "OTHER": "其他API",
+    "FELO": "Felo搜索",
     "ALIASES": "变量名别名",
 }
 

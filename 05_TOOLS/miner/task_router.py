@@ -24,6 +24,18 @@ _BASE_DIR = Path(__file__).parent
 _DATA_DIR = _BASE_DIR / "data"
 _DATA_DIR.mkdir(parents=True, exist_ok=True)
 
+# 加载 .env 文件（如果存在，往上两级找 mine-seed 根目录）
+_env_file = _BASE_DIR.parent.parent / ".env"
+if _env_file.exists():
+    for _line in _env_file.read_text(encoding="utf-8").splitlines():
+        _line = _line.strip()
+        if _line and not _line.startswith("#") and "=" in _line:
+            _key, _val = _line.split("=", 1)
+            _key = _key.strip()
+            _val = _val.strip().strip('"').strip("'")
+            if _key not in os.environ:
+                os.environ[_key] = _val
+
 REGISTRY_FILE = os.environ.get("WORKER_REGISTRY", str(_BASE_DIR / "worker_registry.json"))
 OBSERVATION_FILE = os.environ.get("OBSERVATION_FILE", str(_BASE_DIR / "observation_log.json"))
 JUDGE_FILE = os.environ.get("JUDGE_FILE", str(_BASE_DIR / "judge_history.json"))
@@ -177,6 +189,58 @@ class LocalMinerAdapter(ProviderAdapter):
                 "models": {"qwen2.5-vl": {"capabilities": ["technical_analysis", "risk_assessment", "vision", "chinese"]}},
                 "available": True,
             }
+        
+        # 神稳AI (SWA) — AUM-MISSION-RUNNER-001 子任务2 接入矿池
+        # 仅在至少有一个真实 key 时才注册，避免空 worker
+        swa_keys = [os.environ.get(f"SWA_KEY_{i}", "") for i in range(1, 11)]
+        swa_keys = [k for k in swa_keys if k and not k.startswith("{{")]
+        if swa_keys:
+            self._providers["swa"] = {
+                "call": self._call_swa,
+                "models": {
+                    os.environ.get("SWA_MODEL", "gpt-5.4-mini"): {
+                        "capabilities": ["reasoning", "analysis", "structured_output", "chinese", "long_context"],
+                        "context_window": 32000,
+                        "avg_latency": 8,
+                        "success_rate": 0.92,
+                    }
+                },
+                "available": True,
+            }
+        
+        # Perplexity (PPLX) — 带熔断/退避/key轮询
+        pplx_keys = [os.environ.get(f"PPLX_KEY_{i}", "") for i in range(1, 11)]
+        pplx_keys = [k for k in pplx_keys if k and not k.startswith("{{")]
+        if pplx_keys:
+            self._providers["pplx"] = {
+                "call": self._call_pplx,
+                "models": {
+                    os.environ.get("PPLX_MODEL", "sonar"): {
+                        "capabilities": ["reasoning", "analysis", "search", "structured_output"],
+                        "context_window": 16000,
+                        "avg_latency": 5,
+                        "success_rate": 0.90,
+                    }
+                },
+                "available": True,
+            }
+        
+        # NVIDIA NIM — 16 key 轮询
+        nim_keys = [os.environ.get(f"NIM_KEY_{i}", "") for i in range(1, 17)]
+        nim_keys = [k for k in nim_keys if k and not k.startswith("{{")]
+        if nim_keys:
+            self._providers["nim"] = {
+                "call": self._call_nim,
+                "models": {
+                    os.environ.get("NIM_MODEL", "meta/llama-3.1-8b-instruct"): {
+                        "capabilities": ["reasoning", "analysis", "fast", "structured_output"],
+                        "context_window": 128000,
+                        "avg_latency": 3,
+                        "success_rate": 0.95,
+                    }
+                },
+                "available": True,
+            }
     
     def _check_ollama(self) -> bool:
         try:
@@ -282,6 +346,74 @@ class LocalMinerAdapter(ProviderAdapter):
         except Exception as e:
             return {"error": f"Ollama error: {e}", "success": False}
     
+    def _call_swa(self, model, messages, max_tokens=500, temperature=0.7):
+        """调用神稳AI — AUM-MISSION-RUNNER-001 子任务2
+        
+        委托给 free_llm._call_swa，自带熔断/退避/key轮询。
+        路由调度场景下熔断机制同样生效。
+        """
+        try:
+            # 优先复用 free_llm 的完整实现（带熔断/退避/key轮询）
+            import sys
+            _free_llm_dir = str(_BASE_DIR)
+            if _free_llm_dir not in sys.path:
+                sys.path.insert(0, _free_llm_dir)
+            from free_llm import _call_swa as free_llm_call_swa
+            
+            result = free_llm_call_swa(messages, max_tokens, temperature)
+            if result and "content" in result:
+                return {
+                    "content": result["content"],
+                    "model": result.get("model", model),
+                    "provider": "swa",
+                    "success": True,
+                }
+            return {"error": "SWA returned no content", "success": False}
+        except Exception as e:
+            return {"error": f"SWA error: {e}", "success": False}
+    
+    def _call_pplx(self, model, messages, max_tokens=500, temperature=0.7):
+        """调用 Perplexity — 委托给 free_llm，自带熔断/退避/key轮询"""
+        try:
+            import sys
+            _free_llm_dir = str(_BASE_DIR)
+            if _free_llm_dir not in sys.path:
+                sys.path.insert(0, _free_llm_dir)
+            from free_llm import _call_pplx as free_llm_call_pplx
+            
+            result = free_llm_call_pplx(messages, max_tokens, temperature)
+            if result and "content" in result:
+                return {
+                    "content": result["content"],
+                    "model": result.get("model", model),
+                    "provider": "pplx",
+                    "success": True,
+                }
+            return {"error": "PPLX returned no content", "success": False}
+        except Exception as e:
+            return {"error": f"PPLX error: {e}", "success": False}
+    
+    def _call_nim(self, model, messages, max_tokens=500, temperature=0.7):
+        """调用 NVIDIA NIM — 委托给 free_llm，自带 key 轮询"""
+        try:
+            import sys
+            _free_llm_dir = str(_BASE_DIR)
+            if _free_llm_dir not in sys.path:
+                sys.path.insert(0, _free_llm_dir)
+            from free_llm import _call_nim as free_llm_call_nim
+            
+            result = free_llm_call_nim(messages, max_tokens, temperature)
+            if result and "content" in result:
+                return {
+                    "content": result["content"],
+                    "model": result.get("model", model),
+                    "provider": "nim",
+                    "success": True,
+                }
+            return {"error": "NIM returned no content", "success": False}
+        except Exception as e:
+            return {"error": f"NIM error: {e}", "success": False}
+    
     def is_available(self) -> bool:
         return len(self._providers) > 0
     
@@ -299,7 +431,7 @@ class LocalMinerAdapter(ProviderAdapter):
             provider_name, model_name = model.split("/", 1)
         else:
             # 默认按优先级尝试
-            for provider_name in ["zhipu", "github", "ollama", "openrouter"]:
+            for provider_name in ["zhipu", "github", "ollama", "swa", "openrouter"]:
                 if provider_name in self._providers:
                     info = self._providers[provider_name]
                     model_name = list(info["models"].keys())[0]
@@ -461,6 +593,7 @@ class WorkerRegistry:
                         "github": "GitHub",
                         "ollama": "Ollama",
                         "openrouter": "OpenRouter",
+                        "swa": "SWA",
                         "felo": "Felo",
                     }
                     corps = corps_map.get(provider_name, provider_name.capitalize())

@@ -287,6 +287,10 @@ kimi-k2.7-code, kimi-k2.7-code-highspeed, kimi-k2.6, kimi-k2.5, moonshot-v1系�
 - SIXFINGER_KEY: sixfinger_jv5ts2elbbsgxb87f32g
 - SERPAPI_KEY: e11b42995b047b7ffb5538bc56a5885128eb352f731d65fb6c6682c9b927a07a
 
+### Felo搜索
+- FELO_API_KEY: fk-4ssg3QfyEoZQqugpxk3v8pAe4y0mhlk3Jlpwpys7z39gMq3C
+- FELO_BASE_URL: https://api.felo.ai/v1
+
 ### 变量名别名
 - ZHIPU_KEY: c4c766faaf974bfaba30f381ccc7b066.E7VUlQfxnMXnvVRx
 - ZHIPU_BASE: https://open.bigmodel.cn/api/paas/v4/chat/completions
