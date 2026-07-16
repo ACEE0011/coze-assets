@@ -213,3 +213,86 @@ kimi-k2.7-code, kimi-k2.7-code-highspeed, kimi-k2.6, kimi-k2.5, moonshot-v1系�
 
 ### 定位
 三个Key都有效但均无余额，需充值后才能用。国内账号延迟更低，优先考虑。不急着配One API。
+## 新增NIM Key (15)
+- NIM_KEY_15: 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
+## 新增NIM Key (16)
+- NIM_KEY_16: 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
+
+## === 密钥自动同步区 (Auto-Synced) ===
+### 智谱 GLM
+- GLM_KEY: c4c766faaf974bfaba30f381ccc7b066.E7VUlQfxnMXnvVRx
+- GLM_BASE: https://open.bigmodel.cn/api/paas/v4/chat/completions
+- GLM_MODEL: glm-4-flash
+
+### NVIDIA NIM
+- NIM_KEY_1: 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
+- NIM_KEY_2: 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
+- NIM_KEY_3: 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
+- NIM_KEY_4: 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
+- NIM_KEY_5: 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
+- NIM_KEY_6: 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
+- NIM_KEY_7: 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
+- NIM_KEY_8: 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
+- NIM_KEY_9: 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
+- NIM_KEY_10: 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
+- NIM_KEY_11: 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
+- NIM_KEY_12: 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
+- NIM_KEY_13: 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
+- NIM_KEY_14: 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
+- NIM_KEY_15: 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
+- NIM_KEY_16: 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
+- NIM_BASE: https://integrate.api.nvidia.com/v1/chat/completions
+- NIM_MODEL: meta/llama-3.1-8b-instruct
+
+### GitHub Models
+- GH_MODELS_KEY: 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
+- GH_MODELS_BASE: https://models.inference.ai.azure.com/chat/completions
+- GH_MODELS_MODEL: gpt-4o-mini
+
+### OpenRouter
+- OPENROUTER_KEY: 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
+- OPENROUTER_BASE: https://openrouter.ai/api/v1
+
+### SambaNova
+- SAMBANOVA_KEY: 820feeb9-0201-4312-8c0e-900206a4d2b9
+- SAMBANOVA_BASE: https://api.sambanova.ai/v1
+
+### HuggingFace
+- HF_KEY: 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
+
+### Perplexity
+- PPLX_KEY_1: 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
+- PPLX_KEY_2: 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
+- PPLX_BASE: https://api.perplexity.ai/chat/completions
+- PPLX_MODEL: sonar
+
+### 神稳AI (SWA)
+- SWA_KEY_1: sk-or-v1-sUwZwRuo0c6-5FSz_mIjWWcbiMuB4Qa7z2bZaTJF9Hs
+- SWA_BASE: https://api.shenwenai.com/v1/chat/completions
+- SWA_MODEL: gpt-5.4-mini
+
+### Telegram
+- TG_API_ID: 38398440
+- TG_API_HASH: 3460f304c16a186c2300debc673b2ed0
+- TG_BOT_TOKEN_1: 8384310757:AAEhfTTMaYrV_n9hXFjBUMh2LdeeWkB-Czo
+- TG_BOT_TOKEN_2: 8446702999:AAG71qiArYsF7p8VFXQKEs1EGpC0mX7QJ8Y
+- TG_CHAT_ID: 5016609451
+
+### One API
+- ONEAPI_ADMIN_TOKEN: 3ba2c187fe7f430cb56bdc5b396b8fb2
+- MINER_API_BASE: http://localhost:3000/v1/chat/completions
+
+### 其他API
+- APIYI_KEY: sk-xQrs9IDbjK2LJpFh1d947b41A1B449A4Be0dD8Bf3a7cDc8b
+- SIXFINGER_KEY: sixfinger_jv5ts2elbbsgxb87f32g
+- SERPAPI_KEY: e11b42995b047b7ffb5538bc56a5885128eb352f731d65fb6c6682c9b927a07a
+
+### 变量名别名
+- ZHIPU_KEY: c4c766faaf974bfaba30f381ccc7b066.E7VUlQfxnMXnvVRx
+- ZHIPU_BASE: https://open.bigmodel.cn/api/paas/v4/chat/completions
+- GITHUB_PAT: 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
+- GITHUB_BASE: https://models.inference.ai.azure.com
+- GH_PAT: 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
+- GITHUB_TOKEN: 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
+
+## === 密钥自动同步区结束 ===
