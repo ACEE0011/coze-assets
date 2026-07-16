@@ -29,6 +29,7 @@ Thumbs.db
 *.env
 miner_env.sh
 miner_env.sh.local
+01_credentials/
 
 # Recovery staging (auto-cleaned, 11GB+)
 99_*/
