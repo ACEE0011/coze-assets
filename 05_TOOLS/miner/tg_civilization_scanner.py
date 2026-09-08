@@ -20,8 +20,8 @@ from datetime import datetime
 from telethon import TelegramClient
 from telethon.tl.types import User, Chat, Channel, PeerUser
 
-API_ID = 38398440
-API_HASH = "3460f304c16a186c2300debc673b2ed0"
+API_ID = int(os.environ["TG_API_ID"])
+API_HASH = os.environ["TG_API_HASH"]
 SESSION_FILE = os.path.join(os.path.dirname(__file__), "tg_collections.session")
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "tg_output")

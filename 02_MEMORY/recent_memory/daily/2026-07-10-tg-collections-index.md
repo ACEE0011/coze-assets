@@ -79,7 +79,7 @@
 运行命令:
 ```cmd
 cd C:\Users\User\ace_workspace\mine-seed\05_TOOLS\miner
-"C:\Users\User\AppData\Local\Programs\Python\Python311\python.exe" tg_collections_miner.py --phone "+85592538691"
+"C:\Users\User\AppData\Local\Programs\Python\Python311\python.exe" tg_collections_miner.py --phone "<TG_PHONE_FROM_ENV>"
 ```
 
 ## 后续行动

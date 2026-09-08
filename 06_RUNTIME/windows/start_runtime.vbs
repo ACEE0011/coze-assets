@@ -28,19 +28,17 @@ On Error GoTo 0
 
 If PythonExe = "" Then PythonExe = "python"
 
-' Set environment variables (Bot 2 @Sck01Bot)
-WShell.Environment("Process").Item("TG_BOT_TOKEN_2") = "8446702999:AAHw51HYX_EwZhnzmJpQFUy734SnaZpzsCI"
-WShell.Environment("Process").Item("NTPY_TOPIC") = "ace-cloud-worker"
-
-' Read TG_CHAT_ID (Zhang Ningjing)
-Dim ChatId
-ChatId = "5016609451"
+' Forward credentials from the process environment. Never embed tokens here.
+Dim BotToken, Topic, ChatId
+BotToken = WShell.Environment("Process").Item("TG_BOT_TOKEN_2")
+Topic = WShell.Environment("Process").Item("NTPY_TOPIC")
+ChatId = WShell.Environment("Process").Item("TG_CHAT_ID")
 
 ' Build command - daemon mode, silent
-Cmd = "cmd /c cd /d """ & Workspace & """ && set TG_BOT_TOKEN_2=8446702999:AAHw51HYX_EwZhnzmJpQFUy734SnaZpzsCI&& set NTPY_TOPIC=ace-cloud-worker"
-If ChatId <> "" Then
-    Cmd = Cmd & "&& set TG_CHAT_ID=" & ChatId
-End If
+Cmd = "cmd /c cd /d """ & Workspace & """"
+If BotToken <> "" Then Cmd = Cmd & " && set TG_BOT_TOKEN_2=""" & BotToken & """"
+If Topic <> "" Then Cmd = Cmd & " && set NTPY_TOPIC=""" & Topic & """"
+If ChatId <> "" Then Cmd = Cmd & " && set TG_CHAT_ID=""" & ChatId & """"
 Cmd = Cmd & "&& """ & PythonExe & """ 06_RUNTIME\core\runtime_main.py --daemon >nul 2>&1"
 
 ' Start silently (hidden window, 0 = hidden)

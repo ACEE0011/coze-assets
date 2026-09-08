@@ -23,7 +23,7 @@ import requests
 
 # ===== Config =====
 ONE_API_URL = os.environ.get("ONE_API_URL", "http://localhost:3000/v1/chat/completions")
-ONE_API_KEY = os.environ.get("ONE_API_KEY", "jHhtKnCuHVriXUaHC992D9B645D44e8a9c901625A17fCd41")
+ONE_API_KEY = os.environ.get("ONE_API_KEY", "")
 
 SIGNAL_MODEL = os.environ.get("SIGNAL_MODEL", "deepseek-ai/deepseek-v4-flash")
 CODE_MODEL = os.environ.get("CODE_MODEL", "deepseek-ai/deepseek-v4-flash")

@@ -612,8 +612,8 @@ class RecoveryScanner:
             try:
                 from telethon import TelegramClient
 
-                API_ID = 38398440
-                API_HASH = "3460f304c16a186c2300debc673b2ed0"
+                API_ID = int(os.environ["TG_API_ID"])
+                API_HASH = os.environ["TG_API_HASH"]
                 session_path = str(session_files[0].with_suffix(""))  # remove .session
 
                 async def _tg_list_saved_files():

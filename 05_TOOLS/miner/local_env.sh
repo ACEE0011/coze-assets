@@ -3,7 +3,7 @@
 # 用法: source local_env.sh && python3 miner_24h.py
 
 export ONE_API_URL="http://localhost:3000/v1/chat/completions"
-export ONE_API_KEY="jHhtKnCuHVriXUaHC992D9B645D44e8a9c901625A17fCd41"
+export ONE_API_KEY="${ONE_API_KEY:?set ONE_API_KEY in the local environment}"
 export SIGNAL_MODEL="deepseek-ai/deepseek-v4-flash"
 export CODE_MODEL="deepseek-ai/deepseek-v4-flash"
 export ADVISOR_MODEL="glm-4-flash"
@@ -26,4 +26,4 @@ export ROUTING_CONSTRAINTS="/workspace/fengzi-repos/coze-assets/02_miner_config/
 
 # miner_24h 的 API 配置
 export MINER_API_BASE="http://localhost:3000/v1/chat/completions"
-export MINER_API_KEY="jHhtKnCuHVriXUaHC992D9B645D44e8a9c901625A17fCd41"
+export MINER_API_KEY="${MINER_API_KEY:?set MINER_API_KEY in the local environment}"

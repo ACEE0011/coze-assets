@@ -7,8 +7,8 @@ from telethon import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.tl.types import PeerChannel, PeerChat, PeerUser, Dialog, InputPeerChannel, InputPeerChat, InputPeerUser
 
-API_ID = 38398440
-API_HASH = "3460f304c16a186c2300debc673b2ed0"
+API_ID = int(os.environ["TG_API_ID"])
+API_HASH = os.environ["TG_API_HASH"]
 SESSION_FILE = "tg_collections.session"
 
 TEST_SERVER = "149.154.167.40:443"

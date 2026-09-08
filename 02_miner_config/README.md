@@ -3,7 +3,7 @@
 ## miner_env.sh 核心配置
 - 文件位置: /home/coze/miner_env.sh
 - NIM API Keys: 文件内 NIM_API_KEYS 数组，共9个Key
-- GitHub Token: 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
+- GitHub Token: inject via the local credential helper or `GITHUB_TOKEN`; never store it in this repository
 - 工作模式: 减法/稳定模式(v5)
 - 调度频率: 每4小时一班
 

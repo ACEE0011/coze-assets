@@ -29,6 +29,9 @@ Thumbs.db
 *.env
 miner_env.sh
 miner_env.sh.local
+05_TOOLS/miner/tg_login_state.json
+05_TOOLS/miner/tg_output/
+06_RUNTIME/windows/ace_env.local.ps1
 01_credentials/
 
 # Recovery staging (auto-cleaned, 11GB+)

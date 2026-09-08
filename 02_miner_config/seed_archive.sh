@@ -8,7 +8,7 @@ DATE_TAG=$(date +%Y-%m-%d)
 cd "$REPO"
 
 # Ensure remote URL has credentials for push
-git remote set-url origin "https://zhangapple21-web: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@github.com/zhangapple21-web/mine-seed.git"
+git remote set-url origin "https://github.com/zhangapple21-web/mine-seed.git"
 
 # Pull latest to avoid conflicts
 git pull origin main 2>/dev/null || true

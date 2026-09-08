@@ -1,39 +1,39 @@
-﻿#!/bin/bash
+#!/bin/bash
 # 矿场环境变量 - 所有API凭证集中管理
 # 用法: source miner_env.sh && python3 miner_24h.py
 
 # === One API ===
 export MINER_API_BASE="http://localhost:3000/v1/chat/completions"
-export MINER_API_KEY="{{ONE_API_KEY}}"
+export MINER_API_KEY="${MINER_API_KEY:?set MINER_API_KEY in the local environment}"
 
 # === One API Admin ===
-export ONEAPI_ADMIN_TOKEN="3ba2c187fe7f430cb56bdc5b396b8fb2"
+export ONEAPI_ADMIN_TOKEN="${ONEAPI_ADMIN_TOKEN:?set ONEAPI_ADMIN_TOKEN in the local environment}"
 
 # === NVIDIA NIM Keys (8号) ===
-export NIM_KEY_1="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"
-export NIM_KEY_2="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"
-export NIM_KEY_3="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"
-export NIM_KEY_4="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"
-export NIM_KEY_5="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"
-export NIM_KEY_6="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"
-export NIM_KEY_7="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"
-export NIM_KEY_8="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"
+export NIM_KEY_1="[REDACTED_NIM_KEY]"
+export NIM_KEY_2="[REDACTED_NIM_KEY]"
+export NIM_KEY_3="[REDACTED_NIM_KEY]"
+export NIM_KEY_4="[REDACTED_NIM_KEY]"
+export NIM_KEY_5="[REDACTED_NIM_KEY]"
+export NIM_KEY_6="[REDACTED_NIM_KEY]"
+export NIM_KEY_7="[REDACTED_NIM_KEY]"
+export NIM_KEY_8="[REDACTED_NIM_KEY]"
 
 # === GitHub Models ===
-export GITHUB_PAT="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"
+export GITHUB_PAT="${GITHUB_PAT:?set GITHUB_PAT in the local environment}"
 
 # === 智谱GLM ===
-export ZHIPU_KEY="c4c766faaf974bfaba30f381ccc7b066.E7VUlQfxnMXnvVRx"
+export ZHIPU_KEY="${ZHIPU_KEY:?set ZHIPU_KEY in the local environment}"
 
 # === Telegram ===
-export TG_BOT_TOKEN_1="8384310757:AAEhfTTMaYrV_n9hXFjBUMh2LdeeWkB-Czo"
-export TG_BOT_TOKEN_2="8446702999:AAHw51HYX_EwZhnzmJpQFUy734SnaZpzsCI"
+export TG_BOT_TOKEN_1="${TG_BOT_TOKEN_1:-}"
+export TG_BOT_TOKEN_2="${TG_BOT_TOKEN_2:-}"
 
 echo "✅ 矿场环境变量已加载"
-export NIM_KEY_9="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"
-export NIM_KEY_10="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"
-export NIM_KEY_11="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"
-export NIM_KEY_12="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"
+export NIM_KEY_9="[REDACTED_NIM_KEY]"
+export NIM_KEY_10="[REDACTED_NIM_KEY]"
+export NIM_KEY_11="[REDACTED_NIM_KEY]"
+export NIM_KEY_12="[REDACTED_NIM_KEY]"
 
 # === NIM Dedicated Model Keys ===
 # KEY_10: deepseek-ai/deepseek-v4-pro专用
@@ -41,15 +41,15 @@ export NIM_KEY_12="nvapi-zu3aYWzNipdPck5NebSJulM_OL3Jp6F1PYlfftxzVkAkg4QwxRjsMJm
 # KEY_12: stepfun-ai/step-3.7-flash专用
 
 # === SambaNova (免费$5额度, OpenAI兼容) ===
-export SAMBANOVA_KEY="820feeb9-0201-4312-8c0e-900206a4d2b9"
+export SAMBANOVA_KEY="${SAMBANOVA_KEY:-}"
 export SAMBANOVA_BASE="https://api.sambanova.ai/v1"
 
 # OpenRouter Free Tier (added 2026-06-13)
-export OPENROUTER_KEY="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"
+export OPENROUTER_KEY="[REDACTED_OPENROUTER_KEY]"
 export OPENROUTER_BASE="https://openrouter.ai/api/v1"
 
 # HuggingFace (updated 2026-07-10, token valid, user: zhangapple22)
-export HF_KEY=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
+export HF_KEY=[REDACTED_HF_TOKEN]
 
 # === Signal Discovery Models (2026-06-13: deepseek unreachable, fallback to glm) ===
 export SIGNAL_MODEL="glm-4-flash"
@@ -57,17 +57,17 @@ export CODE_MODEL="glm-4-flash"
 export ADVISOR_MODEL="glm-4-flash"
 
 # === NIM New Keys (2026-06-14 老板提供) ===
-export NIM_KEY_13="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"
-export NIM_KEY_14="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"
+export NIM_KEY_13="[REDACTED_NIM_KEY]"
+export NIM_KEY_14="[REDACTED_NIM_KEY]"
 # KEY_13: minimaxai/minimax-m3专用
 # KEY_14: stepfun-ai/step-3.7-flash专用
 
 # NIM_KEY_15: mistral-medium-3.5-128b专用 (2026-06-14)
-export NIM_KEY_15="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"
+export NIM_KEY_15="[REDACTED_NIM_KEY]"
 # NIM_KEY_16: deepseek-v4-pro专用 (2026-06-14)
-export NIM_KEY_16="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"
+export NIM_KEY_16="[REDACTED_NIM_KEY]"
 
 # New Providers from SECRET.md (2026-07-10)
-export APIYI_KEY="sk-xQrs9IDbjK2LJpFh1d947b41A1B449A4Be0dD8Bf3a7cDc8b"
-export SIXFINGER_KEY="sixfinger_jv5ts2elbbsgxb87f32g"
-export SERPAPI_KEY="e11b42995b047b7ffb5538bc56a5885128eb352f731d65fb6c6682c9b927a07a"
+export APIYI_KEY="${APIYI_KEY:-}"
+export SIXFINGER_KEY="${SIXFINGER_KEY:-}"
+export SERPAPI_KEY="${SERPAPI_KEY:-}"

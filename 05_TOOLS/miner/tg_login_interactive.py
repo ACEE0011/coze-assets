@@ -3,14 +3,15 @@
 TG interactive login v2 — 支持强制SMS和查看验证码类型
 """
 import asyncio
+import os
 from pathlib import Path
 from telethon import TelegramClient
 from telethon.errors import SessionPasswordNeededError, FloodWaitError
 
-API_ID = 38398440
-API_HASH = "3460f304c16a186c2300debc673b2ed0"
+API_ID = int(os.environ["TG_API_ID"])
+API_HASH = os.environ["TG_API_HASH"]
 SESSION_FILE = str(Path(__file__).parent / "tg_collections")
-PHONE = "+85592538691"
+PHONE = os.environ["TG_PHONE"]
 
 
 async def main():

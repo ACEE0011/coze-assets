@@ -11,7 +11,7 @@ import json, time, requests, os, sys, random, traceback
 from datetime import datetime
 
 API_BASE = os.environ.get("MINER_API_BASE", "http://localhost:3000/v1/chat/completions")
-API_KEY = os.environ.get("MINER_API_KEY", "jHhtKnCuHVriXUaHC992D9B645D44e8a9c901625A17fCd41")
+API_KEY = os.environ.get("MINER_API_KEY", "")
 OUTPUT_DIR = os.environ.get("MINER_OUTPUT_DIR", "/home/coze/mine_output")
 
 sys.path.insert(0, os.environ.get("BASE_DIR", "/home/coze"))

@@ -78,8 +78,8 @@ systemctl restart zrok-share-3001.service
 
 ## TG 考古结果
 
-- **TG_BOT_TOKEN_1** (`8384310757:AAEhfTTMaYrV_n9hXFjBUMh2LdeeWkB-Czo`)：**失效**（HTTP 401）
-- **TG_BOT_TOKEN_2** (`8446702999:AAHw51HYX_EwZhnzmJpQFUy734SnaZpzsCI`)：**有效** (@Sck01Bot)
+- **TG_BOT_TOKEN_1** (`[REDACTED]`)：状态记录已失效（HTTP 401）
+- **TG_BOT_TOKEN_2** (`[REDACTED]`)：状态记录曾有效；凭证必须轮换
 - 无活跃聊天 / 群组（getUpdates 返回空）
 
 ## 任务清单

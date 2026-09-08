@@ -15,10 +15,13 @@ except ImportError:
     print("Error: telethon not installed. Run: pip install telethon")
     sys.exit(1)
 
-# Load from env or use defaults
-API_ID = int(os.getenv("TG_API_ID", "38398440"))
-API_HASH = os.getenv("TG_API_HASH", "3460f304c16a186c2300debc673b2ed0")
-PHONE = os.getenv("TG_PHONE", "+85592538691")
+# Credentials must be supplied by the local environment.
+try:
+    API_ID = int(os.environ["TG_API_ID"])
+    API_HASH = os.environ["TG_API_HASH"]
+    PHONE = os.environ["TG_PHONE"]
+except (KeyError, ValueError) as exc:
+    raise SystemExit("TG_API_ID, TG_API_HASH, and TG_PHONE must be set in the local environment") from exc
 
 SESSION_DIR = Path(__file__).parent.parent.parent / "02_MEMORY" / "tg_sessions"
 SESSION_DIR.mkdir(parents=True, exist_ok=True)

@@ -3,8 +3,8 @@
 import asyncio, os
 from telethon import TelegramClient
 
-API_ID = 38398440
-API_HASH = "3460f304c16a186c2300debc673b2ed0"
+API_ID = int(os.environ["TG_API_ID"])
+API_HASH = os.environ["TG_API_HASH"]
 OUTPUT_DIR = "05_TOOLS/miner/tg_output"
 
 async def download_all():

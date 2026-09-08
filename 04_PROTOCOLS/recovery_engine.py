@@ -53,8 +53,8 @@ class SessionValidator:
     def _load_credentials(self):
         """Load api_id and api_hash from miner_env.sh"""
         env_file = WORKSPACE / "05_TOOLS" / "miner" / "miner_env.sh"
-        api_id = "38398440"
-        api_hash = "3460f304c16a186c2300debc673b2ed0"
+        api_id = os.environ.get("TG_API_ID", "")
+        api_hash = os.environ.get("TG_API_HASH", "")
         if env_file.exists():
             for line in env_file.read_text(encoding="utf-8").splitlines():
                 line = line.strip()

@@ -35,7 +35,7 @@ def load_credentials():
     if not api_id:
         api_id = "38398440"
     if not api_hash:
-        api_hash = "3460f304c16a186c2300debc673b2ed0"
+                api_hash = os.environ.get("TG_API_HASH", "")
     return api_id, api_hash
 
 

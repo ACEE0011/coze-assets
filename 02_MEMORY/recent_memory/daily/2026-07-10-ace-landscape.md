@@ -77,7 +77,7 @@
 - Telethon 1.44.0: 已安装
 - 脚本: tg_collections_miner.py 已就绪
 - 阻塞: Telegram 限流（24h），需等 2026-07-11 11:46 UTC 后重试
-- 运行命令: `python tg_collections_miner.py --phone "+85592538691"`
+- 运行命令: `python tg_collections_miner.py --phone "<TG_PHONE_FROM_ENV>"`
 
 ## lab_01 状态
 
